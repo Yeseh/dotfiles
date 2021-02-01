@@ -1,0 +1,68 @@
+[user]
+	email = 48557715+Yeseh@users.noreply.github.com
+	name = Yeseh
+[core]
+	editor = vim
+[color]
+	ui = true
+[color "branch"]
+	current = yellow black
+	local = yellow
+	  remote = magenta
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+  whitespace = white reverse
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+  branch = magenta
+[alias]
+  au = add -u
+  aa = add --all
+  ai = add -i
+  am = commit --amend --no-edit
+  b = branch
+  ci = commit -S
+  co = checkout
+  d = diff
+  dc = diff --cached
+  f = fetch
+  fp = !git fetch && git pull
+  fo = fetch origin
+  fu = fetch upstream
+  l = log --oneline
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  file-log = log -p
+  pr = pull --rebase --prune
+  po = push origin
+  rh = reset --hard
+  rm-ignored = ! git ls-files --ignored --exclude-standard | xargs git rm
+  st = status
+  sup = submodule update --init --recursive
+  sua = submodule foreach --recursive
+  subs = !git submodule init && git sup
+  swn = switch -c
+  news = log -p HEAD@{1}..HEAD@{0}
+  icdiff = ! git difftool --no-prompt --extcmd icdiff | less
+  x = ! git icdiff
+  users = ! git log --all --format='%aN <%aE>' | sort -u
+  undo = reset HEAD~1 --mixed
+  unstage = reset HEAD
+  unchange = checkout-index -a -f # drop changes but keep the index / staged changes
+  amend = commit -a -S --amend
+  rename = commit --amend -S -m
+  wipe = !git add -A && git commit -qm -S 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  unstash = stash apply
+  pushall = !git push --all && git push --tags
+  sync-fork = !git fetch upstream && git checkout master && git merge upstream/master
+  up = !git fetch && git rebase --autostash FETCH_HEAD
+[commit]
+  template = ~/.dotfiles/git_commit_message
+[diff]
+  compactionHeuristic = true
+[credential "https://github.com"]
+	helper = !gh auth git-credential
